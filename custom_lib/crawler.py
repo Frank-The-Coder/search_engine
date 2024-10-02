@@ -50,6 +50,7 @@ class crawler(object):
         self._url_queue = []
         self._doc_id_cache = {}
         self._word_id_cache = {}
+        self._inverted_index = defaultdict(set)
 
         # functions to call when entering and exiting specific tags
         self._enter = defaultdict(lambda *a, **ka: self._visit_ignore)
@@ -208,6 +209,8 @@ class crawler(object):
         # TODO: knowing self._curr_doc_id and the list of all words and their
         #       font sizes (in self._curr_words), add all the words into the
         #       database for this document
+        for word_id, font_size in self._curr_words:
+            self._inverted_index[word_id].add(self._curr_doc_id) 
         print("    num words=" + str(len(self._curr_words)))
 
     def _increase_font_factor(self, factor):
@@ -331,6 +334,22 @@ class crawler(object):
             finally:
                 if socket:
                     socket.close()
+    def get_inverted_index(self):
+        """Return the inverted index as a dictionary with sets as element"""
+        return dict(self._inverted_index)
+    
+    def get_resolved_inverted_index(self):
+        """return the inverted index with ids converted to actual words in a dictionary"""
+        resolved_index = {}
+        word_conversion = {v: k for k, v in self._word_id_cache.items()}
+        doc_conversion = {v: k for k,v in self._doc_id_cache.items()}
+
+        for word_id, doc_ids in self._inverted_index.items():
+            word = word_conversion.get(word_id, None)
+            if word is not None:
+                resolved_index[word] = {doc_conversion[doc_id] for doc_id in doc_ids}
+
+        return resolved_index
 
 
 if __name__ == "__main__":

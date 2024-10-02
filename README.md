@@ -23,17 +23,18 @@ If you don't have Python 3.12.0 installed, you can use `pyenv` to install it. Fo
 
 3. Set Python 3.12.0 as the global version
 
-  ```bash
-  pyenv global 3.12.0
-  ```
+```bash
+pyenv global 3.12.0
+```
 
 Alternatively, set it locally
 
-  ```bash
-  pyenv local 3.12.0
-  ```
+```bash
+pyenv local 3.12.0
+```
 
 ## Set Up and Activate the Virtual Environment
+
 Create and activate the virtual environment:
 On macOS/Linux:
 
@@ -43,17 +44,21 @@ source .venv/bin/activate
 ```
 
 ## Install the Dependencies
+
 Once the virtual environment is active, install the necessary dependencies by running:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
+
 This command installs all the libraries listed in requirements.txt into the virtual environment.
 
 ## Deactivating the Virtual Environment
+
 To exit the virtual environment, run the following command:
 
 ```
 deactivate
 ```
+
 This will return you to the global Python environment.
