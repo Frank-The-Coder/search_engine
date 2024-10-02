@@ -1,1 +1,5 @@
+beautifulsoup4==4.12.3
 bottle==0.13.1
+bs4==0.0.2
+soupsieve==2.6
+urllib3==2.2.3
