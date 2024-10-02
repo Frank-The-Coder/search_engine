@@ -1,0 +1,7 @@
+.venv
+
+# Ignore virtual environment files (pyenv-specific)
+.python-version
+
+#pycache
+__pycache__/
