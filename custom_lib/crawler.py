@@ -355,3 +355,7 @@ class crawler(object):
 if __name__ == "__main__":
     bot = crawler(None, "urls.txt")
     bot.crawl(depth=1)
+    index = bot.get_inverted_index()
+    print(index)
+    resolved_index = bot.get_resolved_inverted_index()
+    print(resolved_index)

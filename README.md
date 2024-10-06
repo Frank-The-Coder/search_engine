@@ -62,3 +62,21 @@ deactivate
 ```
 
 This will return you to the global Python environment.
+
+## Running and testing the app
+
+1. Running
+To run the app:
+```bash
+cd src/
+python app.py
+```
+
+The website will be hosted on https://localhost:8080
+
+2. Testing
+
+```bash
+cd test/
+python test_crawler.py
+```
