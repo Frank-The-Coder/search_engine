@@ -10,7 +10,7 @@
 
 <body>
     <h2>Search for "{{ user_query }}"</h2>
-    <table id="result">
+    <table id="results">
         <thead>
             <tr>
                 <th>Word</th>
