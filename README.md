@@ -2,6 +2,10 @@
 
 This is the repo for the ECE326 LAB
 
+Team members:
+Qingtao Liu 1008744735 liuqingt
+Andrew Chapman Leung 1006981517 leunga74
+
 ## Prerequisites
 
 Before you start, make sure you have the following installed:
