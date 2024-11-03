@@ -84,3 +84,16 @@ The website will be hosted on https://localhost:8080
 cd test/
 python test_crawler.py
 ```
+
+
+# Deploy configuration
+
+The web application is deployed using AWS
+
+OS: ubuntu 22.04 LTS hvm:ebs-ssd
+
+Deploy steps:
+cd src
+sudo env "DEPLOY_MODE=true" "PATH=$PATH" python3 app.py
+
+

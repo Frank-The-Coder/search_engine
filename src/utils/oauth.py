@@ -3,10 +3,11 @@ from googleapiclient.discovery import build
 import httplib2
 from bottle import request, redirect
 import warnings
+from config import MAIN_URL 
 
 # Constants for OAuth
 CLIENT_SECRET_FILE = "client_secret.json"
-REDIRECT_URI = "http://localhost:8080/redirect"
+REDIRECT_URI = MAIN_URL + "redirect"
 SCOPES = [
     'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/userinfo.profile'

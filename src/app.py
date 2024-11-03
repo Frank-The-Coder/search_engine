@@ -3,6 +3,7 @@ from beaker.middleware import SessionMiddleware
 from routes.auth import auth_routes
 from routes.search import search_routes
 from routes.home import home_routes
+from config import IS_DEPLOY
 
 # Initialize the Bottle app
 app = Bottle()
@@ -30,4 +31,12 @@ app.merge(home_routes)
 
 # Run the app
 if __name__ == "__main__":
-    run(app=app_with_sessions, host='localhost', port=8080, debug=True)
+    APP_PORT = 8080
+    HOST_NAME = 'localhost'
+
+
+    if IS_DEPLOY:
+        APP_PORT=80
+        HOST_NAME='0.0.0.0'
+    
+    run(app=app_with_sessions, host=HOST_NAME, port=APP_PORT, debug=True)
