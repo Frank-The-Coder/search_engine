@@ -34,9 +34,9 @@ if __name__ == "__main__":
     APP_PORT = 8080
     HOST_NAME = 'localhost'
 
-
+    
     if IS_DEPLOY:
         APP_PORT=80
         HOST_NAME='0.0.0.0'
-    
+
     run(app=app_with_sessions, host=HOST_NAME, port=APP_PORT, debug=True)
