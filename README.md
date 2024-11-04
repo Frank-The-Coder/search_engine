@@ -118,7 +118,7 @@ sudo env "PATH=$PATH" python3 app.py
 
 2. Configuring the ssh tunnel (on your local machine)
 ```
-ssh -i /path/to/aws/key.pem -L 8080:localhost:8080 utunbu@ec2-23-22-39-109.compute-1.amazonaws.com
+ssh -i /path/to/aws/key.pem -L 8080:localhost:8080 ubuntu@ec2-23-22-39-109.compute-1.amazonaws.com
 
 ```
 
