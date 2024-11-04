@@ -109,6 +109,8 @@ python3 launch_ec2.py --associate-address --instance-id="instance_id"
 ## Running the webapp on the instance
 
 1. launching the webapp on aws instance:
+- The web app is already running on the instance
+- run this step only if you are creating a new instance
 ```
 cd src
 sudo env "PATH=$PATH" python3 app.py
@@ -121,4 +123,16 @@ ssh -i /path/to/aws/key.pem -L 8080:localhost:8080 utunbu@ec2-23-22-39-109.compu
 ```
 
 3. Access the webapp on your machine through `http://localhost:8080`
+
+# Benchmark setup
+To benchmark the deployed web application on AWS, we used Apache Benchmark (ab) for load testing and tools like dstat and vmstat for monitoring system resources.
+The benchmark was run in Anonymous Mode from a separate machine to avoid resource contention on the server.
+The ab tests included 1000 total requests (-n 1000) with an incrementally increased concurrency level (-c), 
+starting from 10 and moving upwards until the server’s limit was reached without connection drops. 
+A 60-second timeout (-s 60) ensured requests had ample time to complete under heavy load. 
+For system monitoring, dstat captured real-time CPU, memory, disk I/O, and network utilization, 
+while vmstat logged CPU and memory usage throughout the test. Key performance metrics included maximum sustained connections, 
+peak requests per second (RPS), average response time, 99th percentile latency, and detailed resource utilization 
+(CPU, memory, disk I/O, and network) under load. These results, along with the system's maximum performance capacities, 
+are documented in the RESULT file.
 
