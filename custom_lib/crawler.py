@@ -51,6 +51,8 @@ class crawler(object):
         self._doc_id_cache = {}
         self._word_id_cache = {}
         self._inverted_index = defaultdict(set)
+        self.page_links = defaultdict(list)  # For storing link relationships
+
 
         # functions to call when entering and exiting specific tags
         self._enter = defaultdict(lambda *a, **ka: self._visit_ignore)
@@ -293,6 +295,15 @@ class crawler(object):
             else:
                 self._add_text(tag)
 
+    def extract_links(self, url, soup):
+        """Extract all links from the BeautifulSoup object."""
+        links = []
+        for anchor in soup.find_all('a', href=True):
+            link = self._fix_url(url, anchor['href'])
+            links.append(link)
+            self.page_links[url].append(link)  # Store the link relationships
+        return links
+    
     def crawl(self, depth=2, timeout=3):
         """Crawl the web!"""
         seen = set()
@@ -318,6 +329,9 @@ class crawler(object):
                 socket = urlopen(url, timeout=timeout)
                 soup = BeautifulSoup(socket.read(), features="html.parser")
 
+                self.extract_links(url, soup)
+
+
                 self._curr_depth = depth_ + 1
                 self._curr_url = url
                 self._curr_doc_id = doc_id
@@ -334,6 +348,7 @@ class crawler(object):
             finally:
                 if socket:
                     socket.close()
+                    
     def get_inverted_index(self):
         """Return the inverted index as a dictionary with sets as element"""
         return dict(self._inverted_index)
