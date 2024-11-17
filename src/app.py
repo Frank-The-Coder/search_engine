@@ -3,6 +3,7 @@ from beaker.middleware import SessionMiddleware
 from routes.auth import auth_routes
 from routes.search import search_routes
 from routes.home import home_routes
+from routes.error import register_error_handlers 
 from config import IS_DEPLOY
 
 # Initialize the Bottle app
@@ -28,6 +29,7 @@ app_with_sessions = SessionMiddleware(app, session_opts)
 app.merge(auth_routes)
 app.merge(search_routes)
 app.merge(home_routes)
+register_error_handlers(app)
 
 # Run the app
 if __name__ == "__main__":

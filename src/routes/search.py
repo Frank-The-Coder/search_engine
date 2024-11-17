@@ -1,4 +1,4 @@
-from bottle import Bottle, request, template
+from bottle import Bottle, request, template, abort
 from models.database import get_pages_from_search, save_search
 from utils.oauth import get_user_info
 
@@ -18,7 +18,11 @@ def search():
         for word in word_count:
             save_search(user_info['user_email'], word)
 
-    url_results, total_pages = get_pages_from_search(user_query.lower().split()[0], 5, page)
+    try:
+        url_results, total_pages = get_pages_from_search(user_query.lower().split()[0], 5, page)
+    except ValueError as e:
+        abort(404, f"{e}") 
+
 
     return template('result_page', 
                     user_query=user_query,

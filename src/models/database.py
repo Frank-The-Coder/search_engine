@@ -68,10 +68,8 @@ def get_pages_from_search(search_word, items_per_page, page_number):
     total_pages = max((total_items + items_per_page - 1) // items_per_page, 1)  # Ceiling division
 
     # TODO: instead of setting the overflow page to last page, direct to error page instead
-    if page_number < 1:
-        page_number = 1
-    elif page_number > total_pages:
-        page_number = total_pages
+    if page_number < 1 or page_number > total_pages:
+        raise ValueError("Page number out of bound")
 
     page_offset = (page_number-1) * items_per_page
 
