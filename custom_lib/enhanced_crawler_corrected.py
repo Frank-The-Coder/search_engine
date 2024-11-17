@@ -7,7 +7,7 @@ class EnhancedCrawler(crawler):
     def __init__(self, db_conn, url_file):
         super().__init__(db_conn, url_file)
 
-    def store_in_persistent_storage(self, db_name="src\search_engine.db"):
+    def store_in_persistent_storage(self, db_name="src/search_engine.db"):
         """Store PageRank scores, lexicon, and indices in SQLite."""
         with sqlite3.connect(db_name) as conn:
             cursor = conn.cursor()

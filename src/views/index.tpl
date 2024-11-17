@@ -14,7 +14,7 @@
   <div class="main-container">
     <div class="logo">FA</div>
 
-    <form action="/search" method="post" class="search-container">
+    <form action="/search" method="get" class="search-container">
       <input type="text" name="keywords" class="search-bar" placeholder="Search..." required>
       <button type="submit" class="search-button">Search</button>
     </form>

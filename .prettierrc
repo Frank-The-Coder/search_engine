@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": "*.tpl",
+      "options": {
+        "parser": "html",
+        "tabWidth": 4
+      }
+    }
+  ]
+}
+
