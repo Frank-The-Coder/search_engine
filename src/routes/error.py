@@ -1,8 +1,9 @@
 from bottle import template, request
 from utils.oauth import get_user_info
 
-
 def register_error_handlers(app):
+    """Registers custom error handlers to the given Bottle app."""
+
     @app.error(404)
     def error_404(error):
         session = request.environ.get('beaker.session')
