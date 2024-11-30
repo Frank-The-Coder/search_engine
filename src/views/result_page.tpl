@@ -20,6 +20,9 @@
                 % end 
             % else: 
                 No URL is found. 
+                % if corrected_query:
+                    <p>Did you mean: <a href="/search?keywords={{ corrected_query }}">{{ corrected_query }}</a>?</p>
+                % end
             % end
             <br />
             <!-- Pagination Buttons -->

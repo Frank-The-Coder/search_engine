@@ -15,8 +15,11 @@
     <div class="logo">FA</div>
 
     <form action="/search" method="get" class="search-container">
-      <input type="text" name="keywords" class="search-bar" placeholder="Search..." required>
+      <input id="search-input" type="text" name="keywords" class="search-bar" placeholder="Search..." required
+        autocomplete="off">
       <button type="submit" class="search-button">Search</button>
+
+      <ul id="suggestions" class="suggestions-list hidden"></ul>
     </form>
 
     % if signedin:
@@ -39,6 +42,8 @@
     </table>
     % end
   </div>
+
+  <script src="/static/scripts/suggestions.js"></script>
 </body>
 
 </html>
